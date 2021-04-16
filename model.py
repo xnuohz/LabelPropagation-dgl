@@ -6,7 +6,23 @@ import dgl.function as fn
 
 class LabelPropagation(nn.Module):
     r"""
-    
+
+    Description
+    -----------
+    Introduced in `Learning from Labeled and Unlabeled Datawith Label Propagation <https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.14.3864&rep=rep1&type=pdf>`_
+
+    .. math::
+        \mathbf{Y}^{\prime} = \alpha \cdot \mathbf{D}^{-1/2} \mathbf{A}
+        \mathbf{D}^{-1/2} \mathbf{Y} + (1 - \alpha) \mathbf{Y},
+
+    where unlabeled data is inferred by labeled data via propagation.
+
+    Parameters
+    ----------
+        num_layers: int
+            The number of propagations.
+        alpha: float
+            The :math:`\alpha` coefficient.
     """
     def __init__(self, num_layers, alpha):
         super(LabelPropagation, self).__init__()
